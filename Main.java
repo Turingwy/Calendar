@@ -3,23 +3,23 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class Main {
-	private static Scanner in = new Scanner(System.in);		//Õû¸öMainÀàÖĞ¹²ÓÃµÄÊä³ö½Ó¿Ú
+	private static Scanner in = new Scanner(System.in);		//æ•´ä¸ªMainç±»ä¸­å…±ç”¨çš„è¾“å‡ºæ¥å£
 
-	private static void option(int opt) throws IOException {		//¶ÔÓÚÓÃ»§ÊäÈëµÄÑ¡Ïî½øĞĞ·ÖÖ§´¦Àí(ÓÃ»§Ñ¡Ôñ1.Ôò»áÌøµ½getCalendar,Ñ¡Ôñ2,Ôò»áÌøµ½searchDay)
+	private static void option(int opt) throws IOException {		//å¯¹äºç”¨æˆ·è¾“å…¥çš„é€‰é¡¹è¿›è¡Œåˆ†æ”¯å¤„ç†(ç”¨æˆ·é€‰æ‹©1.åˆ™ä¼šè·³åˆ°getCalendar,é€‰æ‹©2,åˆ™ä¼šè·³åˆ°searchDay)
 		switch (opt) {
 		case 1:
 			getCalendar();
 			break;
 		case 2:
-			System.out.println("ÊäÈëÒª²éÑ¯µÄÈÕÆÚ  ĞÎÊ½(xxxx-xx-xx)");
+			System.out.println("è¾“å…¥è¦æŸ¥è¯¢çš„æ—¥æœŸ  å½¢å¼(xxxx-xx-xx)");
 			while (!searchDay())
-				System.out.println("ÊäÈëÕıÈ·µÄÈÕÆÚ");
+				System.out.println("è¾“å…¥æ­£ç¡®çš„æ—¥æœŸ");
 			;
 			break;
 		}
 	}
 
-	private static boolean searchDay() {	//ÓÃ»§ĞèÒª¶ÔÊäÈëµÄÄ³Ò»Ìì²éÕÒ¸ø¶¨ĞÇÆÚĞÅÏ¢,¸Ãº¯ÊıÍ¨¹ıjdk×Ô´øÀà¿âÖĞµÄjava.util.Calendar¶ÔÓÃ»§ÊäÈëµÄÈÕÆÚ·µ»Ø¶ÔÓ¦ĞÇÆÚ.
+	private static boolean searchDay() {	//ç”¨æˆ·éœ€è¦å¯¹è¾“å…¥çš„æŸä¸€å¤©æŸ¥æ‰¾ç»™å®šæ˜ŸæœŸä¿¡æ¯,è¯¥å‡½æ•°é€šè¿‡jdkè‡ªå¸¦ç±»åº“ä¸­çš„java.util.Calendarå¯¹ç”¨æˆ·è¾“å…¥çš„æ—¥æœŸè¿”å›å¯¹åº”æ˜ŸæœŸ.
 
 		String s = in.nextLine();
 
@@ -38,25 +38,25 @@ public class Main {
 		Calendar c = Calendar.getInstance();
 		c.set(year, month - 1, day);
 		int w = c.get(Calendar.DAY_OF_WEEK);
-		System.out.println(s + "Îª ĞÇÆÚ" + CalendarWriter.ChineseWeek[w - 1]);
+		System.out.println(s + "ä¸º æ˜ŸæœŸ" + CalendarWriter.ChineseWeek[w - 1]);
 		System.out.println();
 		return true;
 	}
 
-	private static void getCalendar() throws IOException {		//Í¨¹ıÓÃ»§ÊäÈëµÄÄê·İ,ÎÄ¼şÃûÒÔ¼°ÓïÑÔÉú³É²»Í¬µÄAllCalendar¶ÔÏó
-		System.out.println("ÊäÈëÒª²éÑ¯µÄÄê·İ");
+	private static void getCalendar() throws IOException {		//é€šè¿‡ç”¨æˆ·è¾“å…¥çš„å¹´ä»½,æ–‡ä»¶åä»¥åŠè¯­è¨€ç”Ÿæˆä¸åŒçš„AllCalendarå¯¹è±¡
+		System.out.println("è¾“å…¥è¦æŸ¥è¯¢çš„å¹´ä»½");
 		int year = 2015;
 		for (;;) {
 			year = in.nextInt();
 			if (year > 0)
 				break;
 			else
-				System.out.println("ÇëÖØĞÂÊäÈëÕıÈ·µÄÄê·İ like:2015");
+				System.out.println("è¯·é‡æ–°è¾“å…¥æ­£ç¡®çš„å¹´ä»½ like:2015");
 		}
 		in.nextLine();
-		System.out.println("ÄãÒªµ¼³öµ½µÄÎÄ¼ş");
+		System.out.println("ä½ è¦å¯¼å‡ºåˆ°çš„æ–‡ä»¶");
 		String file = in.nextLine();
-		System.out.println("ÊäÈëÈÕÆÚÏÔÊ¾µÄÓïÖÖ(1.ÖĞÎÄ,2.Ó¢ÎÄ),Ä¬ÈÏÎªÖĞÎÄ");
+		System.out.println("è¾“å…¥æ—¥æœŸæ˜¾ç¤ºçš„è¯­ç§(1.ä¸­æ–‡,2.è‹±æ–‡),é»˜è®¤ä¸ºä¸­æ–‡");
 		int lang = in.nextInt();
 		switch (lang) {
 		case 1:
@@ -66,20 +66,20 @@ public class Main {
 			new AllCalendar(file, year, CalendarWriter.English);
 			break;
 		default:
-			System.out.println("Î´ÄÜÊ¶±ğÄãĞèÒªµÄÓïÖÖ,Ê¹ÓÃÖĞÎÄÊä³ö");
+			System.out.println("æœªèƒ½è¯†åˆ«ä½ éœ€è¦çš„è¯­ç§,ä½¿ç”¨ä¸­æ–‡è¾“å‡º");
 			new AllCalendar(file, year, CalendarWriter.Chinese);
 			break;
 		}
-		System.out.println("ÒÑ¾­Ğ´ÈëÎÄ¼ş\n");
+		System.out.println("å·²ç»å†™å…¥æ–‡ä»¶\n");
 	}
 
 	public static void main(String[] args) throws IOException {
 		int year;
 		boolean lang;
 
-		System.out.println("ÍòÄêÀú                 by ¼Æ¿Æ133Íõ¶«Ğñ");
+		System.out.println("ä¸‡å¹´å†");
 		for (;;) {
-			System.out.println("1.²éÑ¯Ä³ÄêÈÕÀú 2.²éÑ¯Ä³ÈÕÎªĞÇÆÚ¼¸");
+			System.out.println("1.æŸ¥è¯¢æŸå¹´æ—¥å† 2.æŸ¥è¯¢æŸæ—¥ä¸ºæ˜ŸæœŸå‡ ");
 			int opt = 1;
 			for (;;) {
 				opt = in.nextInt();
